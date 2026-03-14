@@ -1,0 +1,362 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+{%block body%}
+
+<div class="containerfluid my-2 px-0">
+ 
+</style>
+
+<!-- If you want it contained within the page margins, wrap it in a <div class="container">. 
+     If you want it full width, remove the <div class="container"> -->
+<div class="container my-4"> 
+  <div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner rounded shadow-sm"> <!-- Added rounded corners and shadow for styling -->
+      <div class="carousel-item active" data-bs-interval="10000">
+        <!-- Added carousel-img-custom class here -->
+        <img src="static/img/carousel23.jpg" class="d-block w-100 carousel-img-custom" alt="Ice creams of Pune">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 text-white rounded"> <!-- Added a background so text is readable -->
+          <h5>Welcome to the best Ice creams of Pune</h5>
+          <p>"Life is like ice cream, enjoy it before it melts."</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <!-- Added carousel-img-custom class here -->
+        <img src="static/img/carousel21.jpg" class="d-block w-100 carousel-img-custom" alt="Second Slide">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 text-white rounded">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!-- Added carousel-img-custom class here -->
+        <img src="static/img/carousel22.jpg" class="d-block w-100 carousel-img-custom" alt="Third Slide">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 text-white rounded">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+```
+
+
+</div>
+<main>
+  <!-- Section Title -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="fw-bold">Our Popular Flavors</h2>
+        <p class="text-muted">Handcrafted with love, served with joy</p>
+        <hr class="w-25 mx-auto">
+      </div>
+    </div>
+  </div>
+
+  <!-- Album Section with 9 Cards -->
+  <div class="album py-4 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+
+
+
+        <!-- Card 1 - Kulfi -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c7.jpg" 
+              class="card-img-top" 
+              alt="Kulfi ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Royal Kulfi</h5>
+              <p class="card-text">
+                Traditional Indian kulfi flavor with cardamom, saffron, and pistachio.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹99</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+        
+        <!-- Card 2 - berry -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c8.jpg" 
+              class="card-img-top" 
+              alt="black berry ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Currant Crush</h5>
+              <p class="card-text">
+                Creamy ice cream infused with tangy black currant flavor and berry bits.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹149</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Card 3 - coffe -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c9.jpg" 
+              class="card-img-top" 
+              alt="coffee ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Mocha Magic</h5>
+              <p class="card-text">
+                Smooth coffee ice cream made with rich roasted coffee beans
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹129</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <!-- Card 4 - oreo -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c10.jpg" 
+              class="card-img-top" 
+              alt="oreo ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Oreo Dream</h5>
+              <p class="card-text">
+               Smooth vanilla ice cream loaded with crushed chocolate cookies.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹169</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Card 5 - caramel -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c11.jpg" 
+              class="card-img-top" 
+              alt="caramel ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Salted Caramel Bliss</h5>
+              <p class="card-text">
+                Velvety caramel ice cream with a hint of sea salt and caramel ribbons.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹189</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Card 6 - Bluecarmelberry -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c12.jpg" 
+              class="card-img-top" 
+              alt="Blueberry ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Berry Blue</h5>
+              <p class="card-text">
+                Creamy blueberry ice cream made with juicy handpicked blueberries.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹159</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+ <!-- Card 7 - Berry Bliss -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c1.jpg" 
+              class="card-img-top" 
+              alt="strawberry Ice Cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Berry Bliss</h5>
+              <p class="card-text">
+               Fresh strawberries blended into creamy ice cream with sweet berry swirls.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+               
+                <span class="badge bg-success fs-6">₹299</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Card 8  - Golden Crunch -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c2.jpg" 
+              class="card-img-top" 
+              alt="butterscotch Ice Cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Golden Crunch</h5>
+              <p class="card-text">
+                Creamy butterscotch ice cream with caramel swirls and crunchy praline bits.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹119</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9- Pista Royale -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c3.jpg" 
+              class="card-img-top" 
+              alt="pista Ice Cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Pista Royale</h5>
+              <p class="card-text">
+                Rich pistachio ice cream made with premium roasted pistachios.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+               
+                <span class="badge bg-success fs-6">₹149</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Card 10 - Vanilla Delight -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c4.jpg" 
+              class="card-img-top" 
+              alt="Vanilla Ice Cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Vanilla Delight</h5>
+              <p class="card-text">
+                Classic vanilla ice cream with Madagascar vanilla beans.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹199</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+         <!-- Card 11 - Choco Fudge -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c5.jpg" 
+              class="card-img-top" 
+              alt="Choco Fudge"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Choco Fudge</h5>
+              <p class="card-text">
+                Rich Belgian chocolate with fudge swirls and almonds.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+               
+                <span class="badge bg-success fs-6">₹129</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Card 12 - Mango -->
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <img 
+              src="static/img/c6.jpg" 
+              class="card-img-top" 
+              alt="Mango ice cream"
+              height="225"
+              style="object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Alphonso Mango</h5>
+              <p class="card-text">
+                Premium Alphonso mango from Ratnagiri farms.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <span class="badge bg-success fs-6">₹149</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+
+
+{%endblock body%}
