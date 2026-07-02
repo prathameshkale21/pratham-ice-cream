@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}
+Products
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5 mt-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Categories</h5>
+                </div>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="/products/" class="list-group-item list-group-item-action">
+                        All Products
+                    </a>
+
+                    {% for category in categories %}
+                    <a href="?category={{ category.id }}"
+                       class="list-group-item list-group-item-action">
+                        {{ category.name }}
+                    </a>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Products -->
+        <div class="col-lg-9">
+
+            <!-- Search -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <form method="GET">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-5">
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="search"
+                                    placeholder="Search Ice Cream..."
+                                    value="{{ request.GET.search }}">
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                <select class="form-select" name="sort">
+
+                                    <option value="" {% if not request.GET.sort %}selected{% endif %}>Sort By</option>
+                                    <option value="low" {% if request.GET.sort == "low" %}selected{% endif %}>Price Low → High</option>
+                                    <option value="high" {% if request.GET.sort == "high" %}selected{% endif %}>Price High → Low</option>
+                                    <option value="latest" {% if request.GET.sort == "latest" %}selected{% endif %}>Latest</option>
+                                    <option value="name" {% if request.GET.sort == "name" %}selected{% endif %}>Name</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <button class="btn btn-primary w-100">
+                                    Search
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- Products Grid -->
+
+            <div class="row g-4">
+
+                {% for product in products %}
+
+<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
+                    <div class="card product-card shadow-sm border-0 h-100">
+
+                        <div class="product-image">
+
+                            <a href="{% url 'products:product_detail' product.slug %}">
+                                <img src="{{ product.image.url }}"
+                                     class="card-img-top"
+                                     alt="{{ product.name }}">
+                            </a>
+
+                            {% if product.discount_price %}
+                            <span class="badge bg-danger sale-badge">
+                                SALE
+                            </span>
+                            {% endif %}
+
+                            <a href="{% url 'wishlist:add_to_wishlist' product.id %}"
+                               class="wishlist-btn" title="Add to Wishlist">
+                                <i class="bi bi-heart"></i>
+                            </a>
+
+                        </div>
+
+                        <div class="card-body text-center">
+
+                            <small class="text-muted">
+                                {{ product.category.name }}
+                            </small>
+
+                            <h5 class="fw-bold mt-2">
+                                {{ product.name }}
+                            </h5>
+
+                            <div class="rating-stars mb-2">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+
+                            <h4 class="mb-3">
+
+                                {% if product.discount_price %}
+
+                                <span class="price">₹{{ product.discount_price }}</span>
+                                <span class="old-price">₹{{ product.price }}</span>
+
+                                {% else %}
+
+                                <span class="price text-success">₹{{ product.price }}</span>
+
+                                {% endif %}
+
+                            </h4>
+
+                            <div class="d-grid gap-2 mt-3">
+
+                                <a href="{% url 'products:product_detail' product.slug %}"
+                                   class="btn btn-outline-primary">
+
+                                    View Details
+
+                                </a>
+
+                                <a href="{% url 'cart:add_to_cart' product.id %}"
+                                   class="btn btn-warning">
+
+                                    🛒 Add to Cart
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <div class="alert alert-warning text-center">
+                        No Products Found
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- Pagination -->
+
+            {% if products.has_other_pages %}
+
+            <nav class="mt-5">
+
+                <ul class="pagination justify-content-center">
+
+                    {% if products.has_previous %}
+
+                    <li class="page-item">
+
+                        <a class="page-link"
+                           href="?page={{ products.previous_page_number }}">
+
+                            Previous
+
+                        </a>
+
+                    </li>
+
+                    {% endif %}
+
+                    <li class="page-item active">
+
+                        <span class="page-link">
+
+                            {{ products.number }}
+
+                        </span>
+
+                    </li>
+
+                    {% if products.has_next %}
+
+                    <li class="page-item">
+
+                        <a class="page-link"
+                           href="?page={{ products.next_page_number }}">
+
+                            Next
+
+                        </a>
+
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+
+            </nav>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

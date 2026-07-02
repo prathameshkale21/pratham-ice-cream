@@ -1,0 +1,132 @@
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-white" href="{% url 'home' %}">
+            🍦 Pratham Ice Cream
+        </a>
+
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products:product_list' %}">
+                        Products
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'wishlist:wishlist' %}">
+                        <i class="bi bi-heart"></i>
+                        Wishlist
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="{% url 'cart:cart' %}">
+                        <i class="bi bi-cart3"></i>
+                        Cart
+
+                        <span class="badge rounded-pill bg-danger cart-count">
+                            0
+                        </span>
+
+                    </a>
+                </li>
+
+                <li class="nav-item ms-3">
+
+                    <form class="d-flex" action="{% url 'products:product_list' %}" method="GET">
+
+                        <input class="form-control search-box"
+                               type="search"
+                               name="search"
+                               placeholder="Search Ice Cream"
+                               value="{{ request.GET.search }}">
+
+                    </form>
+
+                </li>
+
+                <li class="nav-item dropdown ms-3">
+
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+
+                        <i class="bi bi-person-circle"></i>
+
+                        {% if request.user.is_authenticated %}
+                            {{ request.user.username }}
+                        {% else %}
+                            Account
+                        {% endif %}
+
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+
+                        {% if request.user.is_authenticated %}
+
+                        <li>
+                            <a class="dropdown-item" href="{% url 'orders:order_history' %}">
+                                <i class="bi bi-box-seam"></i> My Orders
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="{% url 'wishlist:wishlist' %}">
+                                <i class="bi bi-heart"></i> Wishlist
+                            </a>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                <i class="bi bi-box-arrow-right"></i> Logout
+                            </a>
+                        </li>
+
+                        {% else %}
+
+                        <li>
+                            <a class="dropdown-item" href="{% url 'accounts:login' %}">
+                                Login
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="{% url 'accounts:register' %}">
+                                Register
+                            </a>
+                        </li>
+
+                        {% endif %}
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

@@ -1,62 +1,102 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{%block title%} {%endblock title%}| Pratham Ice Cream</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  
+<head>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong></strong>
-      <button type="button" class>
-        <a class="navbar-brand" href="#">Pratham Ice Cream</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-          <!-- ms-auto pushes the menu to the Right side -->
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
-            </li>
-           
-            
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact us</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
-            </li>
-          
-          
-        </div>
-      </div>
-    </nav>
+    <title>
+        {% block title %}
+            Pratham Ice Cream
+        {% endblock %}
+    </title>
 
-    {% if messages%}
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    {% include 'components/navbar.html' %}
+
+{% if messages %}
+
+<div id="popup-container">
+
     {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-      <strong>{{message}}</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    <div class="popup-message {% if message.tags == 'error' %}popup-error{% elif message.tags == 'warning' %}popup-warning{% elif message.tags == 'info' %}popup-info{% endif %}">
+
+        <div class="popup-icon">
+
+            {% if message.tags == 'error' %}
+            <i class="bi bi-x-circle-fill"></i>
+            {% elif message.tags == 'warning' %}
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            {% elif message.tags == 'info' %}
+            <i class="bi bi-info-circle-fill"></i>
+            {% else %}
+            <i class="bi bi-check-circle-fill"></i>
+            {% endif %}
+
+        </div>
+
+        <div class="popup-content">
+
+            <h6>
+                {% if message.tags == 'error' %}Error
+                {% elif message.tags == 'warning' %}Warning
+                {% elif message.tags == 'info' %}Info
+                {% else %}Success
+                {% endif %}
+            </h6>
+
+            <p>{{ message }}</p>
+
+        </div>
+
+        <button class="popup-close">
+
+            &times;
+
+        </button>
+
     </div>
-     {%endfor%}
-     {% endif %}
 
-    {% block body %}{% endblock body %}
+    {% endfor %}
 
-    <!-- THIS SCRIPT IS REQUIRED FOR THE DROPDOWN TO WORK -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
-  </body>
+</div>
+
+{% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'components/footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
 </html>

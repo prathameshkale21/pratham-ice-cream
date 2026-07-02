@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+Pratham Ice Cream
+{% endblock %}
+
+{% block content %}
+<!-- Carousel -->
+
+<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+
+        {% for slide in carousel %}
+
+        <button
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide-to="{{ forloop.counter0 }}"
+            class="{% if forloop.first %}active{% endif %}">
+        </button>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="carousel-inner">
+
+        {% for slide in carousel %}
+
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
+            <img src="{{ slide.image.url }}"
+                 class="d-block w-100"
+                 style="height:650px;object-fit:cover;">
+
+            <div class="carousel-caption">
+
+                <h1>{{ slide.title }}</h1>
+
+                <p>{{ slide.caption }}</p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <button class="carousel-control-prev"
+            data-bs-target="#mainCarousel"
+            data-bs-slide="prev">
+
+        <span class="carousel-control-prev-icon"></span>
+
+    </button>
+
+    <button class="carousel-control-next"
+            data-bs-target="#mainCarousel"
+            data-bs-slide="next">
+
+        <span class="carousel-control-next-icon"></span>
+
+    </button>
+
+</div>
+
+
+{% include "components/featured_products.html" %}
+
+{% endblock %}

@@ -1,0 +1,66 @@
+SETUP NOTE — READ THIS FIRST
+=============================
+
+I added two brand-new database tables (Wishlist and Orders), so before you
+run the server, apply the new migrations once:
+
+    python manage.py migrate
+
+That's it — everything else (products, cart, categories, users) is
+untouched and will keep working exactly as before.
+
+Then run the project as usual:
+
+    python manage.py runserver
+
+
+WHAT WAS ADDED / FIXED IN THIS UPDATE
+======================================
+
+1. Login & Register pages
+   - accounts/forms.py, accounts/views.py, accounts/urls.py were empty —
+     built out register, login, logout (Django's default
+     LOGIN_URL /accounts/login/ is matched automatically, so
+     @login_required on cart/wishlist/orders now redirects correctly).
+   - templates/accounts/login.html had a bug: it used
+     {% block body %} but base.html defines {% block content %}, so the
+     form never actually rendered. Fixed, and matching CSS added to
+     static/css/style.css (.auth-container, .glass-form, etc.).
+   - templates/accounts/register.html was completely empty — built it to
+     match the login page's styling.
+
+2. Navbar
+   - Removed the "Categories" nav item (link went nowhere).
+   - Search box now actually submits to the product list page.
+   - Wishlist icon links to the real wishlist page.
+   - Account dropdown is now dynamic: shows Login/Register when logged
+     out, and username/My Orders/Wishlist/Logout when logged in.
+
+3. Wishlist — built from scratch
+   - wishlist/models.py, views.py, urls.py, admin.py, and the
+     migration were all empty/missing. Added a WishlistItem model,
+     add/remove views, and a full wishlist page.
+   - Added a working heart button on product cards (home page,
+     product list page, product detail page).
+
+4. Orders / footer links
+   - Added Order and OrderItem models so checkout now actually saves an
+     order instead of just emptying the cart.
+   - Added an order history page and wired it to the footer's
+     "Orders" and "My Account" links.
+   - Footer "Wishlist" and "Privacy Policy" links are now real pages
+     instead of "#".
+   - Added a Privacy Policy page (home/views.py + templates/privacy_policy.html).
+
+5. Small bug fixes found along the way
+   - about.html had the same {% block body %} bug as login.html — fixed,
+     wired to a real /about/ URL, and given real content.
+   - The product list page's sort dropdown ("Price Low → High" etc.) sent
+     values the view didn't recognise, so sorting silently did nothing.
+     Fixed to match.
+   - The "Add to Cart" button on the product list page was a plain
+     <button> with no link — it didn't actually add anything to the cart.
+     Fixed to link to the real add-to-cart URL (as covered in the
+     previous update).
+
+Nothing in Prathamesh/settings.py was changed.

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}My Wishlist{% endblock %}
+
+{% block content %}
+
+<div class="container py-5 mt-5">
+
+    <h2 class="mb-4">
+        ❤️ My Wishlist
+    </h2>
+
+    {% if items %}
+
+    <div class="row g-4">
+
+        {% for item in items %}
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card product-card shadow-sm border-0 h-100">
+
+                <div class="product-image">
+
+                    <a href="{% url 'products:product_detail' item.product.slug %}">
+                        <img src="{{ item.product.image.url }}"
+                             class="card-img-top"
+                             alt="{{ item.product.name }}">
+                    </a>
+
+                    {% if item.product.discount_price %}
+                    <span class="badge bg-danger sale-badge">SALE</span>
+                    {% endif %}
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <h5>{{ item.product.name }}</h5>
+
+                    <p class="text-muted small">
+                        {{ item.product.category.name }}
+                    </p>
+
+                    <h4 class="mb-3">
+                        {% if item.product.discount_price %}
+                        <span class="price">₹{{ item.product.discount_price }}</span>
+                        <span class="old-price">₹{{ item.product.price }}</span>
+                        {% else %}
+                        <span class="price text-success">₹{{ item.product.price }}</span>
+                        {% endif %}
+                    </h4>
+
+                    <div class="d-grid gap-2">
+
+                        <a href="{% url 'cart:add_to_cart' item.product.id %}"
+                           class="btn btn-warning">
+                            🛒 Add to Cart
+                        </a>
+
+                        <a href="{% url 'wishlist:remove_from_wishlist' item.id %}"
+                           class="btn btn-outline-danger">
+                            <i class="bi bi-trash"></i> Remove
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-info">
+        Your wishlist is empty.
+        <a href="{% url 'products:product_list' %}">Browse products</a> and tap the ❤️ icon to save your favourites.
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
