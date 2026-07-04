@@ -181,7 +181,9 @@ STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
+    
 }
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Persistent media storage via Cloudinary — Render's free tier wipes the
 # local disk on every restart/redeploy, so uploaded product images need
