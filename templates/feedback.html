@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+
+<div class="container py-5 mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm border-0 p-4 p-md-5">
+
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">💬 We'd Love Your Feedback</h2>
+                    <p class="text-muted">
+                        Tell us what you loved, or what we can do better.
+                    </p>
+                </div>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Your Name</label>
+                        <input type="text"
+                               name="name"
+                               class="form-control"
+                               placeholder="Enter your name"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email"
+                               name="email"
+                               class="form-control"
+                               placeholder="Enter your email"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Phone</label>
+                        <input type="text"
+                               name="phone"
+                               class="form-control"
+                               placeholder="Enter your phone number"
+                               required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Your Feedback</label>
+                        <textarea name="desc"
+                                  class="form-control"
+                                  rows="5"
+                                  placeholder="Share your thoughts..."
+                                  required></textarea>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-warning btn-lg fw-bold">
+                            Submit Feedback
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

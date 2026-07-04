@@ -1,0 +1,106 @@
+/* =====================================
+   PRATHAM ICE CREAM — CUSTOM ADMIN THEME
+===================================== */
+
+:root {
+    --primary: #ff758c;
+    --secondary: #ffb347;
+    --accent: #FFD700;
+}
+
+#header {
+    background: linear-gradient(90deg, #ff758c, #ffb347) !important;
+    color: #fff !important;
+}
+
+#header a:link,
+#header a:visited {
+    color: #fff !important;
+}
+
+#branding h1 {
+    font-weight: 700 !important;
+}
+
+#branding h1 a:link,
+#branding h1 a:visited {
+    color: #fff !important;
+}
+
+div.breadcrumbs {
+    background: #2b2b2b !important;
+    color: #ffd9a0 !important;
+}
+
+div.breadcrumbs a {
+    color: #ffb347 !important;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: linear-gradient(90deg, #ff758c, #ffb347) !important;
+    color: #fff !important;
+}
+
+a:link, a:visited {
+    color: #d6455d;
+}
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+    background: linear-gradient(45deg, #ff758c, #ffb347) !important;
+    border-radius: 8px !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+    opacity: 0.9;
+}
+
+.button.default,
+input[type=submit].default {
+    background: linear-gradient(45deg, #d6455d, #ff9248) !important;
+}
+
+#user-tools a {
+    border-bottom: 1px solid rgba(255,255,255,0.5) !important;
+}
+
+.dashboard .module table th {
+    width: auto;
+}
+
+#changelist-filter {
+    border-radius: 10px;
+}
+
+.object-tools a.addlink {
+    background: linear-gradient(45deg, #ff758c, #ffb347) !important;
+    border-radius: 8px !important;
+}
+
+/* View Site button used on the login / logged-out pages */
+.view-site-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: linear-gradient(45deg, #ff758c, #ffb347);
+    color: #fff !important;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+}
+
+.view-site-btn:hover {
+    opacity: 0.9;
+    color: #fff !important;
+}

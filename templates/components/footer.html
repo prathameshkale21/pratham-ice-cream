@@ -34,7 +34,7 @@
 
                     <li><a href="{% url 'about' %}">About</a></li>
 
-                    <li><a href="{% url 'about' %}">Contact</a></li>
+                    <li><a href="{% url 'feedback' %}">Feedback</a></li>
 
                 </ul>
 
@@ -98,6 +98,10 @@
                     <a href="#"><i class="bi bi-youtube"></i></a>
 
                 </div>
+
+                <a href="{% url 'feedback' %}" class="btn btn-warning fw-bold mt-3">
+                    <i class="bi bi-chat-heart-fill"></i> Give Feedback
+                </a>
 
             </div>
 

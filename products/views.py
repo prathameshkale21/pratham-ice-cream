@@ -1,16 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from home.models import Product, Category
-
-
-from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from home.models import Product, Category
 
 
 def product_list(request):
 
-    products = Product.objects.filter(available=True)
+    products = Product.objects.filter(available=True).select_related("category")
     categories = Category.objects.all()
 
     # Search
@@ -43,8 +39,14 @@ def product_list(request):
     elif sort == "name":
         products = products.order_by("name")
 
+    # Pagination — keeps each page light and fast to load
+    paginator = Paginator(products, 12)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        "products": products,
+        "products": page_obj,
+        "page_obj": page_obj,
         "categories": categories,
     }
 
@@ -55,16 +57,17 @@ def product_list(request):
     )
 
 
-
-
 def product_detail(request, slug):
 
-    product = get_object_or_404(Product, slug=slug)
+    product = get_object_or_404(
+        Product.objects.select_related("category"),
+        slug=slug
+    )
 
     related_products = Product.objects.filter(
         category=product.category,
         available=True
-    ).exclude(id=product.id)[:4]
+    ).select_related("category").exclude(id=product.id)[:4]
 
     return render(
         request,

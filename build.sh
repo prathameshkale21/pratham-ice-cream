@@ -8,4 +8,6 @@ python manage.py collectstatic --no-input
 
 python manage.py migrate
 
+python manage.py clear_catalog
+
 python manage.py create_admin

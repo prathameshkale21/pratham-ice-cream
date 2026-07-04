@@ -25,7 +25,8 @@
                     <a href="{% url 'products:product_detail' item.product.slug %}">
                         <img src="{{ item.product.image.url }}"
                              class="card-img-top"
-                             alt="{{ item.product.name }}">
+                             alt="{{ item.product.name }}"
+                             loading="lazy">
                     </a>
 
                     {% if item.product.discount_price %}

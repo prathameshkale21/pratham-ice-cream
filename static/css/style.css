@@ -581,7 +581,8 @@ body{
     font-size:14px;
 }
 
-.auth-container .input-box input{
+.auth-container .input-box input,
+.auth-container .input-box select{
     width:100%;
     padding:14px;
 
@@ -593,6 +594,10 @@ body{
 
     color:#fff;
     outline:none;
+}
+
+.auth-container .input-box select option{
+    color:#000;
 }
 
 .auth-container .input-box input::placeholder{

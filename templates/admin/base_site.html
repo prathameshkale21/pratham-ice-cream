@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Pratham Ice Cream Admin{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">🍦 Pratham Ice Cream — Admin</a>
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin_custom.css' %}">
+{% endblock %}
+
+{% block usertools %}
+{{ block.super }}
+{% if not has_permission %}
+<div style="text-align:center; padding:10px 0;">
+    <a href="{% url 'home' %}" class="view-site-btn">
+        🏠 View Site
+    </a>
+</div>
+{% endif %}
+{% endblock %}

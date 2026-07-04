@@ -7,6 +7,10 @@ from .models import (
     ProductImage,
 )
 
+admin.site.site_header = "🍦 Pratham Ice Cream — Admin"
+admin.site.site_title = "Pratham Ice Cream Admin"
+admin.site.index_title = "Dashboard"
+
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):

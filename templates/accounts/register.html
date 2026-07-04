@@ -52,6 +52,22 @@
             {% endfor %}
         </div>
 
+        <div class="input-box">
+            <label>Security Question</label>
+            {{ form.security_question }}
+            {% for error in form.security_question.errors %}
+            <p class="field-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="input-box">
+            <label>Answer (used to recover your password later)</label>
+            {{ form.security_answer }}
+            {% for error in form.security_answer.errors %}
+            <p class="field-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
         <button class="auth-btn" type="submit">
             🍨 Register
         </button>

@@ -65,7 +65,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
 
      # Local Apps
     'accounts',
@@ -179,6 +182,22 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+# Persistent media storage via Cloudinary — Render's free tier wipes the
+# local disk on every restart/redeploy, so uploaded product images need
+# to live somewhere permanent. This only activates when Cloudinary
+# credentials are set (via env vars), so local development without a
+# Cloudinary account still just uses the local media/ folder as before.
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default=''),
+    'API_KEY': config('CLOUDINARY_API_KEY', default=''),
+    'API_SECRET': config('CLOUDINARY_API_SECRET', default=''),
+}
+
+if CLOUDINARY_STORAGE['CLOUD_NAME']:
+    STORAGES['default'] = {
+        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+    }
 
 # Render terminates SSL at its proxy, so tell Django requests are secure
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

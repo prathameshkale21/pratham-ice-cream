@@ -23,4 +23,22 @@ urlpatterns = [
         name="logout",
     ),
 
+    path(
+        "forgot-password/",
+        views.forgot_password_view,
+        name="forgot_password",
+    ),
+
+    path(
+        "verify-security-question/",
+        views.verify_security_question_view,
+        name="verify_security_question",
+    ),
+
+    path(
+        "reset-password/",
+        views.reset_password_view,
+        name="reset_password",
+    ),
+
 ]
